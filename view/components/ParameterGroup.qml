@@ -3,8 +3,8 @@ import QtQuick.Controls 2.15
 
 Item {
     id: root
+    default property alias content: contentContainer.data
     property alias title: titleText.text
-    property alias content: contentContainer
 
     Column {
         anchors.fill: parent; spacing: 8
