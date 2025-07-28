@@ -7,8 +7,13 @@ import "components"  // Import our custom components
 
 
 ApplicationWindow {
-    id: window; width: 1200; height: 800; visible: true
-    title: qsTr("Neon Plotter GUI"); color: "#1E1E2E"
+    id: window
+    width: 1200
+    height: 800
+    visible: true
+    property bool darkMode: true
+    title: qsTr("Neon Plotter GUI")
+    color: darkMode ? "#1E1E2E" : "#F4F4F4"
 
     // Top toolbar
     ToolBar {
@@ -18,7 +23,11 @@ ApplicationWindow {
             NeonButton { text: qsTr("导入数据"); iconSource: "../icons/upload.png" }
             NeonButton { text: qsTr("一键美化"); iconSource: "../icons/magic.png" }
             NeonButton { text: qsTr("导出"); iconSource: "../icons/export.png" }
-            NeonButton { text: qsTr("主题切换"); iconSource: "../icons/palette.png" }
+            NeonButton {
+                text: qsTr("主题切换")
+                iconSource: "../icons/palette.png"
+                onClicked: window.darkMode = !window.darkMode
+            }
             NeonButton { text: qsTr("帮助"); iconSource: "../icons/help.png" }
         }
     }
@@ -28,10 +37,18 @@ ApplicationWindow {
         id: sidebar; width: 240
         anchors { top: header.bottom; bottom: parent.bottom; left: parent.left }
         Column { anchors.fill: parent; anchors.margins: 16; spacing: 10
-            Label { text: qsTr("最近项目"); color: "#E0E0E0"; font.pixelSize: 18 }
+            Label {
+                text: qsTr("最近项目")
+                color: window.darkMode ? "#E0E0E0" : "#202020"
+                font.pixelSize: 18
+            }
             ListView {
                 model: ["project1", "project2"]
-                delegate: Text { text: modelData; color: "#E0E0E0"; font.pixelSize: 14 }
+                delegate: Text {
+                    text: modelData
+                    color: window.darkMode ? "#E0E0E0" : "#202020"
+                    font.pixelSize: 14
+                }
                 clip: true
             }
         }
@@ -46,6 +63,7 @@ ApplicationWindow {
             ColumnLayout { spacing: 24
                 ParameterGroup {
                     title: qsTr("样式")
+                    darkMode: window.darkMode
                     Column { spacing: 12
                         Slider { from: 0; to: 10; value: 2 }
                         ColorDialog { id: colorDlg }
@@ -54,6 +72,7 @@ ApplicationWindow {
                 }
                 ParameterGroup {
                     title: qsTr("导出")
+                    darkMode: window.darkMode
                     Column { spacing: 12
                         ComboBox { model: ["PNG", "SVG", "PDF"] }
                         NeonButton { text: qsTr("开始导出") }
@@ -66,6 +85,7 @@ ApplicationWindow {
     // Central plot area
     PlotView {
         id: plotArea
+        darkMode: window.darkMode
         anchors { top: header.bottom; bottom: parent.bottom; left: sidebar.right; right: inspector.left }
     }
 }

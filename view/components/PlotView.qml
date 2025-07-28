@@ -3,7 +3,8 @@ import QtQuick.Controls 2.15
 import QtQuick.Layouts
 Rectangle {
     id: root
-    color: "#1E1E2E"
+    property bool darkMode: true
+    color: darkMode ? "#1E1E2E" : "#FFFFFF"
 
     // Placeholder content (replace with real plot integration)
     Text {
