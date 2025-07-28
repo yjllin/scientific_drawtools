@@ -1,0 +1,36 @@
+# This file is used to introduce the structure of the project.
+
+ToDoListApp/
+├── docs/                   # 项目文档、设计稿、API 说明
+├── src/                    # 源代码根目录
+│   ├── main.py             # 程序入口
+│   ├── settings.py         # 全局配置管理
+│   ├── models/             # 数据模型（ORM 或 数据对象）
+│   ├── db/                 # 数据持久层
+│   ├── controllers/        # 业务逻辑与服务层
+│   ├── views/              # QML 与 UI 相关
+│   │   ├── MainView.qml
+│   │   └── components/     # 可复用 QML 组件
+│   ├── resources/          # 静态资源（图标、翻译文件等）
+│   └── utils/              # 工具函数／扩展模块
+│       ├── logger.py
+│       └── helpers.py
+├── tests/                  # pytest 单元／集成测试
+├── assets/                 # 设计稿、原型、QML 样式参考
+├── .gitignore
+├── requirements.txt
+├── pyproject.toml
+├── README.md
+└── LICENSE
+
+
+
+
+
+
+
+
+
+
+
+
