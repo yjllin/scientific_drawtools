@@ -1,1 +1,24 @@
-{"verion":"0.0.1","entries":[{"type":"entry","label":"完成基础的GUI","completed":false,"children":[]},{"type":"entry","label":"完成绘制功能","completed":false,"children":[]},{"type":"entry","label":"完成导出功能","completed":false,"children":[]}]}
+{
+  "entries": [
+    {
+      "type": "entry",
+      "label": "完成基础的GUI",
+      "completed": false,
+      "children": []
+    },
+    {
+      "type": "entry",
+      "label": "完成绘制功能",
+      "completed": false,
+      "children": []
+    },
+    {
+      "type": "entry",
+      "label": "完成导出功能",
+      "completed": false,
+      "children": []
+    }
+  ],
+  "version": "0.0.1"
+}
+
