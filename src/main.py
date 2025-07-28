@@ -1,16 +1,24 @@
-import sys
 import os
-from PySide6.QtGui import QGuiApplication
-from PySide6.QtQml import QQmlApplicationEngine
+import sys
+
+
+def get_qml_dir() -> str:
+    """Return the absolute path to the bundled QML directory."""
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    return os.path.abspath(os.path.join(base_dir, "../view"))
 
 
 def main():
     """Application entry point."""
+    # Import Qt modules only when running the application so tests do not
+    # require PySide6 to be installed.
+    from PySide6.QtGui import QGuiApplication
+    from PySide6.QtQml import QQmlApplicationEngine
+
     app = QGuiApplication(sys.argv)
     
     # Locate QML directory relative to this file
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    qml_dir = os.path.join(base_dir, "../view")
+    qml_dir = get_qml_dir()
 
     engine = QQmlApplicationEngine()
 
